@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block title%}Registrace{%endblock title%}
+
+{%block obsah %}
+
+<h1>Registrace</h1>
+
+<form method="post">
+
+<table>
+    <tr>
+        <td>jmeno:</td>
+        <td><input type="text" name="jmeno" minlength="5"></td>
+    </tr>
+    <tr>
+        <td>heslo poprve:</td>
+        <td><input type="password" name="heslo1" minlength="5"></td>
+    </tr>
+    <tr>
+        <td>heslo podruhe:</td>
+        <td><input type="password" name="heslo2" minlength="5"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><button>Registrovat</button></td>
+    </tr>
+</table>
+
+
+</form>
+
+{% endblock obsah %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{%block title%}Kalkulacka{%endblock title%}
+
+{% block obsah %}
+
+
+<h1>Zadejte dva argumenty, které chcete sečíst</h1>
+
+<form method="get">
+a=<input type="text" name="a" value="{{ request.args.get('a','') }}">
+b=<input type="text" name="b" value="{{ request.args.get('b','') }}">
+<input type="submit" value="Vypočítat">
+
+</form>
+
+<p>{{ a }} + {{ b }} = {{ c }}</p>
+
+{% endblock obsah %}

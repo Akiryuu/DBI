@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+
+  <title>{%block title%}123456{%endblock%}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='xdd.gif') }}" />
+
+</head>
+
+<body id="main">
+
+  <nav>
+
+  <p>
+  {% if 'user' in session %}
+  Uživatel: {{ session['user'] }}. 
+  <a href="{{ url_for('logout') }}">Logout</a>
+  {% else %}
+  Nikdo není přihlášen.
+  {% endif %}
+  </p>
+  </nav>
+
+  
+  <p class="Links"><a href="{{ url_for('google') }}">Google</a> <a href="{{ url_for('kalkulacka') }}">Kalkulačka</a> <a href="{{ url_for('login') }}">Login</a> <a href="{{ url_for('registration') }}">Registrace</a></p>
+  
+
+  {% for  category, message in get_flashed_messages(with_categories=True) %}
+  <p class="message {{ category }}">{{ message }}</p>
+  {% endfor %}
+
+{% block obsah %}
+
+
+{% endblock obsah %}
+
+
+
+</body>
+</html>

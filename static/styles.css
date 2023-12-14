@@ -1,0 +1,84 @@
+body {
+  background-color: #860202;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: 90px;
+  margin-right: 90px; }
+
+h1, h2, h3 {
+  clear: both;
+  margin-top: 3em;
+}
+
+h1 a {
+  color: #bb8800;
+}
+
+nav {
+  margin: 1ex auto;
+  margin-left: 375px;
+  text-align: center;
+  font-weight: bold; }
+  nav {
+    display: block;
+    width: 30%;
+    margin-top: 1ex;
+    }
+    nav a {
+      display: block;
+      color: white;
+      background-color: #030405;
+      border-radius: 50px 50px 50px;
+      padding: 1ex 2ex; }
+    nav a:hover {
+      color: #030405;
+      background-color: white;
+    }
+  nav img {
+    float:left;
+  }
+
+footer {
+  padding: 0.1ex 2em;
+  margin-top: 2em;
+  border-top: solid 2px #000000;
+  background-color: #ecc8f0; }
+
+.login {
+  display: inline-block;
+  float: right;
+  width: 30%;
+  border: rgb(0, 0, 0) solid 2px;
+  padding: 1ex; }
+  
+.odd {
+    background-color: orange;
+}
+
+.even {
+    background-color: lightblue;
+}
+
+.message {
+  border: #bb8800 solid 2px;
+  font-size: 200%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1ex;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.success {
+  border-color: #860202;
+}
+.error {
+  border-color: #860202;
+}
+
+#identifier {
+  width: 50%;
+}
+/*# sourceMappingURL=styles.css.map */
+z_ch = tkinter.stringvar(value=units[0])

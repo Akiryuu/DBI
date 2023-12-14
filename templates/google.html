@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block obsah %}
+
+<h1>Google</h1>
+
+<form action="http://google.com/">
+    <input type="text" name="q">
+</form>
+<p><img src="{{ url_for('static', filename='xdd.gif') }}" /></p>
+
+{% endblock obsah %}
