@@ -9,6 +9,7 @@ from flask import (
     escape,
     flash,
 )
+import datetime
 import functools
 from sqlitewrap import SQLite
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -43,6 +44,41 @@ def root():
 def google():
     return render_template("google.html")
 
+@app.route("/vzkazy/", methods=["GET"])
+def vzkazy():
+    if 'user' not in session:
+        flash("Tato stánka je pouze pro příhlášené!")
+        return redirect(url_for("login", url=request.path))
+
+    with SQLite("data.sqlite") as cursor:
+        response = cursor.execute(
+            "SELECT login, body, datetime FROM user JOIN message ON user.id = message.user_id ORDER BY datetime DESC"                    
+        )
+        response = response.fetchall()
+
+    return render_template("vzkazy.html", response=response)
+
+@app.route("/vzkazy/", methods=["POST"])
+def vzkazy_post():
+    if 'user' not in session:
+       flash("Tato stánka je pouze pro příhlášené!")
+       return redirect(url_for("login", url=request.path))     
+     
+    with SQLite("data.sqlite") as cursor:
+        response = cursor.execute("SELECT id FROM user WHERE login=?", [session["user"]])
+        response = response.fetchone()
+        user_id = list(response)[0]
+
+    vzkaz = request.form.get('vzkaz')
+    if vzkaz:
+        with SQLite("data.sqlite") as cursor:
+            cursor.execute(
+                "INSERT INTO message (user_id, body, datetime) VALUES (?, ?, ?)", 
+                [user_id, vzkaz, datetime.datetime.now()],
+            )
+
+        print(vzkaz)
+    return redirect(url_for("vzkazy"))
 
 @app.route("/kalkulacka/", methods=["GET"])
 def kalkulacka():
@@ -105,7 +141,7 @@ def login_post():
         )
         response = response.fetchone()
         if response:
-            login, passwd = response.fetchone()
+            login, passwd = list(response)
             if check_password_hash(passwd, heslo):
                 session["user"] = jmeno
                 flash("Jsi přihlášen!", "success")

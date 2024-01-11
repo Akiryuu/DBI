@@ -24,10 +24,8 @@
   </p>
   </nav>
 
-  
-  <p class="Links"><a href="{{ url_for('google') }}">Google</a> <a href="{{ url_for('kalkulacka') }}">Kalkulačka</a> <a href="{{ url_for('login') }}">Login</a> <a href="{{ url_for('registration') }}">Registrace</a></p>
-  
-
+  <p class="links"><a href="{{ url_for('google') }}">Google</a><a href="{{ url_for('kalkulacka') }}">Kalkulačka</a><a href="{{ url_for('login') }}">Login</a><a href="{{ url_for('registration') }}">Registrace</a><a href="{{ url_for('vzkazy') }}">Vzkazy</a></p>
+ 
   {% for  category, message in get_flashed_messages(with_categories=True) %}
   <p class="message {{ category }}">{{ message }}</p>
   {% endfor %}

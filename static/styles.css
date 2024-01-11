@@ -14,33 +14,11 @@ h1 a {
   color: #bb8800;
 }
 
-nav {
-  margin: 1ex auto;
-  margin-left: 375px;
-  text-align: center;
-  font-weight: bold; }
-  nav {
-    display: block;
-    width: 30%;
-    margin-top: 1ex;
-    }
-    nav a {
-      display: block;
-      color: white;
-      background-color: #030405;
-      border-radius: 50px 50px 50px;
-      padding: 1ex 2ex; }
-    nav a:hover {
-      color: #030405;
-      background-color: white;
-    }
-  nav img {
-    float:left;
-  }
 
 footer {
   padding: 0.1ex 2em;
-  margin-top: 2em;
+  margin-top: 2em;/*# sourceMappingURL=styles.css.map */
+  z_ch = tkinter.stringvar(value=units[0])
   border-top: solid 2px #000000;
   background-color: #ecc8f0; }
 
@@ -77,8 +55,35 @@ footer {
   border-color: #860202;
 }
 
+.links {
+  text-align: center;
+}
+
+.links a {
+  display: block;
+  color: white;
+  background-color: #030405;
+  border-radius: 50px 50px 50px;
+  padding: 1ex 2ex; 
+}
+
+
+    nav a {
+      text-align: center;
+      display: block;
+      color: white;
+      background-color: #030405;
+      border-radius: 50px 50px 50px;
+      padding: 1ex 2ex; }
+    nav a:hover {
+      color: #030405;
+      background-color: white;
+    }
+  nav img {
+    float:left;
+  }
+
+
 #identifier {
   width: 50%;
 }
-/*# sourceMappingURL=styles.css.map */
-z_ch = tkinter.stringvar(value=units[0])
