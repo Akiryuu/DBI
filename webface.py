@@ -80,6 +80,39 @@ def vzkazy_post():
         print(vzkaz)
     return redirect(url_for("vzkazy"))
 
+@app.route("/vzkaz/vymazat/", methods=["POST"])
+def vymaz_vzkaz():
+    id = request.form.get('id')
+    if id:
+        with SQLite("data.sqlite") as cursor:
+            response = cursor.execute("SELECT id FROM user WHERE login = ?", [session['user']] )
+            user_id = response.fetchone()[0]
+            cursor.execute("DELETE FROM message WHERE id = ?", [id, user_id])
+    return redirect(url_for("vzkazy"))
+
+@app.route("/editovat/<int:id>/")
+def editovat(id):
+    with SQLite("data.sqlite") as cursor:
+        response = cursor.execute("SELECT body FROM message WHERE id = ?", [id])
+        body = response.fetchone()[0]
+    return render_template('editovat.html', body=body)
+
+@app.route("/editovat/<int:id>/", methods=["POST"])
+def editovat_post(id):
+    body = request.form.get("body")
+    if body:
+        with SQLite("data.sqlite") as cursor:
+            cursor.execute(
+                "update message set body = ? WHERE id = ? and user_id = "
+                "(SELECT id FROM user WHERE login = ?)",
+                [body, session['user'] ],
+            )
+
+    return redirect(url_for("vzkazy"))
+
+
+
+
 @app.route("/kalkulacka/", methods=["GET"])
 def kalkulacka():
     if 'user' not in session:

@@ -24,10 +24,15 @@
       {{d.fromisoformat(datetime).strftime('%d.%_m.%Y %H:%M')}}
     </p>
     {% if session['user'] == login %}
-      <form action="">
+      <form action="{{ url_for('vymaz_vzkaz') }}" method="POST">
        <input type="hidden" name="id" value="{{id}}">
        <button type="submit">Vymazat</button>
       </form>
+
+      <form action="{{ url_for('editovat', id=id) }}" method="GET">
+      <button type="submit">Editovat</button>
+      </form>
+
     {% endif %}
     <pre class="telo">{{body}}</pre>
   </div>
