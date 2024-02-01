@@ -1,3 +1,9 @@
+*.sqlite
+__pycache__/
+
+
+
+
 *.swp
 webface/*.sqlite
 */*.sqlite
